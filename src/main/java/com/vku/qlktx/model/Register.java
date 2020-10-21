@@ -1,9 +1,7 @@
 package com.vku.qlktx.model;
 
 import java.util.Date;
-
 import javax.persistence.*;
-
 @Entity
 public class Register {
     @Id
