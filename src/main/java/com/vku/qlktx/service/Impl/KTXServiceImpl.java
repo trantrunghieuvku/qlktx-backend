@@ -1,5 +1,8 @@
 package com.vku.qlktx.service.Impl;
 
-public class KTXServiceImpl {
+import com.vku.qlktx.service.KTXService;
+
+public class KTXServiceImpl implements KTXService {
     
+     
 }
