@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class Room {
     
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column
@@ -24,6 +24,9 @@ public class Room {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "roomRegisters")
     private Set<Register> listRegisters = new HashSet<>();
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "roomStudents")
+    private Set<Students> listStudents = new HashSet<>();
+    
     public int getId() {
         return id;
     }
