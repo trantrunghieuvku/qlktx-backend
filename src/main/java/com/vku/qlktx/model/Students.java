@@ -1,5 +1,8 @@
 package com.vku.qlktx.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.*;
 
 @Entity
@@ -30,6 +33,16 @@ public class Students {
     @ManyToOne(targetEntity = Room.class,cascade = CascadeType.ALL)
     @JoinColumn(name ="r_id")
     private Room roomStudents;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "u_id", referencedColumnName = "id")
+    private User studentUser;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "feedbackStudents")
+    private Set<Feedback> listBill = new HashSet<>();
+
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "contractStudents")
+    private Contract contract;
 
     public int getId() {
         return id;

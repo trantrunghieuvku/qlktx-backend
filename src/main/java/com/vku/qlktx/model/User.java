@@ -18,6 +18,12 @@ public class User {
     @Column
     private String role;
 
+    @OneToOne(mappedBy = "employeeUser")
+    private Employees employee;
+
+    @OneToOne(mappedBy = "studentUser")
+    private Students students;
+
     public int getId() {
         return id;
     }

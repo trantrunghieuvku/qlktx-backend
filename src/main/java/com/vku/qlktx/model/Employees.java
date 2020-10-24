@@ -21,6 +21,13 @@ public class Employees {
     @Column
     private String gender;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "u_id", referencedColumnName = "id")
+    private User employeeUser;
+
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "contractEmployees")
+    private Contract contract;
+
     public int getId() {
         return id;
     }
@@ -59,6 +66,14 @@ public class Employees {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public User getEmployeeUser() {
+        return employeeUser;
+    }
+
+    public void setEmployeeUser(User employeeUser) {
+        this.employeeUser = employeeUser;
     }
 
     

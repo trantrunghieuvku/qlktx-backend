@@ -27,6 +27,9 @@ public class Room {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "roomStudents")
     private Set<Students> listStudents = new HashSet<>();
     
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "roomBill")
+    private Set<Bill> listBill = new HashSet<>();
+
     public int getId() {
         return id;
     }

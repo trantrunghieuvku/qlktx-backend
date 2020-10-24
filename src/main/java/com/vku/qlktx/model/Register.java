@@ -25,6 +25,7 @@ public class Register {
 
     @Column
     private String address;
+    
     @ManyToOne(targetEntity = Room.class,cascade = CascadeType.ALL)
     @JoinColumn(name ="r_id")
     private Room roomRegisters;
