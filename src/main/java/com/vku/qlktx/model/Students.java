@@ -1,9 +1,13 @@
 package com.vku.qlktx.model;
 
-import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.*;
+
 @Entity
-public class Register {
+public class Students {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -15,20 +19,30 @@ public class Register {
     private String sCode;
 
     @Column
+    private String sName;
+
+    @Column
+    private String classroom;
+
+    @Column
     private String email;
 
     @Column
-    private Long Identification;
-
-    @Column
-    private Date dob;
-
-    @Column
     private String address;
-    
+
     @ManyToOne(targetEntity = Room.class,cascade = CascadeType.ALL)
     @JoinColumn(name ="r_id")
-    private Room roomRegisters;
+    private Room roomStudents;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "u_id", referencedColumnName = "id")
+    private User studentUser;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "feedbackStudents")
+    private Set<Feedback> listBill = new HashSet<>();
+
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "contractStudents")
+    private Contract contract;
 
     public int getId() {
         return id;
@@ -54,28 +68,28 @@ public class Register {
         this.sCode = sCode;
     }
 
+    public String getsName() {
+        return sName;
+    }
+
+    public void setsName(String sName) {
+        this.sName = sName;
+    }
+
+    public String getClassroom() {
+        return classroom;
+    }
+
+    public void setClassroom(String classroom) {
+        this.classroom = classroom;
+    }
+
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public Long getIdentification() {
-        return Identification;
-    }
-
-    public void setIdentification(Long identification) {
-        Identification = identification;
-    }
-
-    public Date getDob() {
-        return dob;
-    }
-
-    public void setDob(Date dob) {
-        this.dob = dob;
     }
 
     public String getAddress() {
@@ -85,14 +99,4 @@ public class Register {
     public void setAddress(String address) {
         this.address = address;
     }
-
-    public Room getRoomRegisters() {
-        return roomRegisters;
-    }
-
-    public void setRoomRegisters(Room roomRegisters) {
-        this.roomRegisters = roomRegisters;
-    }
-
-    
 }
