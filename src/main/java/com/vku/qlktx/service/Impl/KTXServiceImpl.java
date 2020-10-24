@@ -15,12 +15,17 @@ public class KTXServiceImpl implements KTXService {
     @Autowired
     private RegisterRepository registerRepository;
 
-    public List<Register> getAllRegister() {
-        return registerRepository.findAll();
-    }
+     @Override
+     public List<Register> getAllRegister() {
+         // TODO Auto-generated method stub
+         return registerRepository.findAll();
+     }
 
-    public Optional<Register> getRegisterById(Integer id) {
+     @Override
+     public Optional<Register> getRegisterById(Integer id) {
+         // TODO Auto-generated method stub
          return registerRepository.findById(id);
      }
           
 }
+ 
