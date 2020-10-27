@@ -2,21 +2,28 @@ package com.vku.qlktx.model;
 
 import java.util.Date;
 import javax.persistence.*;
+import javax.validation.constraints.*;
+
 @Entity
 public class Register {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @NotNull
+    @NotBlank
     @Column
     private String name;
 
     @Column
     private String sCode;
 
+    @Email
+    @NotNull
     @Column
     private String email;
 
+    @NotNull
     @Column
     private Long Identification;
 
@@ -29,6 +36,22 @@ public class Register {
     @ManyToOne(targetEntity = Room.class,cascade = CascadeType.ALL)
     @JoinColumn(name ="r_id")
     private Room roomRegisters;
+
+
+    public Register(String name, String sCode, String email, Long Identification, Date dob, String address, Room roomRegisters) {
+        this.name = name;
+        this.sCode = sCode;
+        this.email = email;
+        this.Identification = Identification;
+        this.dob = dob;
+        this.address = address;
+        this.roomRegisters = roomRegisters;
+    }
+
+
+    public Register() {
+    }
+
 
     public int getId() {
         return id;

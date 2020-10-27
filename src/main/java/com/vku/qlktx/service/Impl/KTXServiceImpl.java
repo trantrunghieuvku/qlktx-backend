@@ -30,23 +30,33 @@ public class KTXServiceImpl implements KTXService {
 
     @Override
     public List<Register> getAllRegister() {
-        // TODO Auto-generated method stub
         return registerRepository.findAll();
     }
 
     @Override
     public Optional<Register> getRegisterById(Integer id) {
-        // TODO Auto-generated method stub
         return registerRepository.findById(id);
     }
 
-    // ví dụ cái này chuyển qua roomService đc ko
-    //1 service thôi, tất cả đều ở trong 1 service luôn để chung service khi thêm vào controller cho dễ
+    // @Override
+    // public List<Room> searchRoom(String rName) {
+    //     return roomRepository.findByrNameStartingWith(rName);
+    // }
+
     @Override
-    public List<Room> searchRoom(String rName) {
-        // TODO Auto-generated method stub
-        return roomRepository.findByNameStartingWith(rName);
+    public Room getRoomByName(String roomName) {
+        return roomRepository.findByrNameStartingWith(roomName);
     }
+
+    @Override
+    public boolean addRegister(Register register) {
+        registerRepository.save(register);
+        return true;
+
+    }
+
+    
+
           
 }
  
