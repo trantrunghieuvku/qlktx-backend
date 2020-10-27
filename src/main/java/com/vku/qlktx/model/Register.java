@@ -2,6 +2,8 @@ package com.vku.qlktx.model;
 
 import java.util.Date;
 import javax.persistence.*;
+import javax.validation.constraints.*;
+
 @Entity
 public class Register {
     @Id
@@ -14,7 +16,10 @@ public class Register {
     @Column
     private String sCode;
 
-    @Column
+    @Column(unique = true)
+    @NotBlank
+    @NotNull
+    @Email
     private String email;
 
     @Column
