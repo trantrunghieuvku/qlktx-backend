@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import com.vku.qlktx.model.Register;
 import com.vku.qlktx.model.Room;
-import com.vku.qlktx.repository.RegisterRepository;
 import com.vku.qlktx.service.Impl.KTXServiceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +29,4 @@ public class KTXControler {
     public List<Room> getRoom(@RequestParam("name") String rName) {
         return ktxService.searchRoom(rName);
     }
-
-    
-    
 }
