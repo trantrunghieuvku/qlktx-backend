@@ -13,7 +13,7 @@ public class Room {
     private int id;
 
     @Column
-    private String rName;
+    private String name;
 
     @Column
     private String status;
@@ -39,11 +39,11 @@ public class Room {
     }
 
     public String getrName() {
-        return rName;
+        return name;
     }
 
     public void setrName(String rName) {
-        this.rName = rName;
+        this.name = rName;
     }
 
     public String getStatus() {
