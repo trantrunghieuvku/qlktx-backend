@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.vku.qlktx.model.Register;
-import com.vku.qlktx.repository.RegisterRepository;
+import com.vku.qlktx.model.Room;
 import com.vku.qlktx.service.Impl.KTXServiceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,14 +20,13 @@ public class KTXControler {
     @Autowired
     private KTXServiceImpl ktxService;
 
-    @Autowired
-    private RegisterRepository repository;
-
     @GetMapping(value="/register")
     public List<Register> getRegister() {
-        return repository.findAll();
+        return ktxService.getAllRegister();
     }
 
-    
-    
+    @GetMapping(value="/room")
+    public List<Room> getRoom(@RequestParam("name") String rName) {
+        return ktxService.searchRoom(rName);
+    }
 }
