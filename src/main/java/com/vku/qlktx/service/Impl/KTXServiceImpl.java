@@ -32,9 +32,9 @@ public class KTXServiceImpl implements KTXService {
     }
 
     @Override
-    public Room searchRoom(String rName) {
+    public List<Room> searchRoom(String rName) {
         // TODO Auto-generated method stub
-        return null;
+        return roomRepository.findByrNameStartingWith(rName);
     }
           
 }
