@@ -9,5 +9,9 @@ import com.vku.qlktx.model.Room;
 public interface KTXService {
     List<Register> getAllRegister();
     Optional<Register> getRegisterById(Integer id);
-    List<Room> searchRoom(String rName);
+    void addRegister(Register register);
+    // List<Room> searchRoom(String rName);
+    Room getRoomByName(String roomName);
+
+   
 }

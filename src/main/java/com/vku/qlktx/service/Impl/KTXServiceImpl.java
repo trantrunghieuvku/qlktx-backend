@@ -21,21 +21,30 @@ public class KTXServiceImpl implements KTXService {
 
     @Override
     public List<Register> getAllRegister() {
-        // TODO Auto-generated method stub
         return registerRepository.findAll();
     }
 
     @Override
     public Optional<Register> getRegisterById(Integer id) {
-        // TODO Auto-generated method stub
         return registerRepository.findById(id);
     }
 
+    // @Override
+    // public List<Room> searchRoom(String rName) {
+    //     return roomRepository.findByrNameStartingWith(rName);
+    // }
+
     @Override
-    public List<Room> searchRoom(String rName) {
-        // TODO Auto-generated method stub
-        return roomRepository.findByrNameStartingWith(rName);
+    public Room getRoomByName(String roomName) {
+        return roomRepository.findByrNameStartingWith(roomName);
     }
+
+    @Override
+    public void addRegister(Register register) {
+        registerRepository.save(register);
+
+    }
+
           
 }
  
