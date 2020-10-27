@@ -56,6 +56,4 @@ public class BillDetails {
     public void setModifiedDate(Date modifiedDate) {
         ModifiedDate = modifiedDate;
     }
-
-    
 }
