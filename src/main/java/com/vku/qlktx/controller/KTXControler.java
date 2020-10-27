@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RestController
 public class KTXControler {
     
+    // mình có thể khai báo vô đây để gọi mà, sau này mình xử lí nhiều, 1 cái service mà đến 1000 dòng, nhìn chắc rối lắm
+    //thế mới để 1 service. serivce mk cũng phải khai thêm repository cũng rối
     @Autowired
     private KTXServiceImpl ktxService;
 

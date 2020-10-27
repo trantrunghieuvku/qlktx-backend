@@ -10,4 +10,5 @@ public interface KTXService {
     List<Register> getAllRegister();
     Optional<Register> getRegisterById(Integer id);
     List<Room> searchRoom(String rName);
+    
 }
