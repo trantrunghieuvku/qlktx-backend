@@ -16,7 +16,7 @@ public class Register {
     private String name;
 
     @Column
-    private String sCode;
+    private String code;
 
     @Email
     @NotNull
@@ -25,7 +25,7 @@ public class Register {
 
     @NotNull
     @Column
-    private Long Identification;
+    private Long identification;
 
     @Column
     private Date dob;
@@ -38,11 +38,11 @@ public class Register {
     private Room roomRegisters;
 
 
-    public Register(String name, String sCode, String email, Long Identification, Date dob, String address, Room roomRegisters) {
+    public Register(String name, String code, String email, Long identification, Date dob, String address, Room roomRegisters) {
         this.name = name;
-        this.sCode = sCode;
+        this.code = code;
         this.email = email;
-        this.Identification = Identification;
+        this.identification = identification;
         this.dob = dob;
         this.address = address;
         this.roomRegisters = roomRegisters;
@@ -69,12 +69,12 @@ public class Register {
         this.name = name;
     }
 
-    public String getsCode() {
-        return sCode;
+    public String getCode() {
+        return code;
     }
 
-    public void setsCode(String sCode) {
-        this.sCode = sCode;
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getEmail() {
@@ -86,11 +86,11 @@ public class Register {
     }
 
     public Long getIdentification() {
-        return Identification;
+        return identification;
     }
 
     public void setIdentification(Long identification) {
-        Identification = identification;
+        identification = identification;
     }
 
     public Date getDob() {

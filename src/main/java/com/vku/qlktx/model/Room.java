@@ -13,13 +13,13 @@ public class Room {
     private int id;
 
     @Column
-    private String rName;
+    private String name;
 
     @Column
     private String status;
     
     @Column
-    private String Quality;
+    private String quality;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "roomRegisters")
     private Set<Register> listRegisters = new HashSet<>();
@@ -38,12 +38,12 @@ public class Room {
         this.id = id;
     }
 
-    public String getrName() {
-        return rName;
+    public String getName() {
+        return name;
     }
 
-    public void setrName(String rName) {
-        this.rName = rName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getStatus() {
@@ -55,11 +55,11 @@ public class Room {
     }
 
     public String getQuality() {
-        return Quality;
+        return quality;
     }
 
     public void setQuality(String quality) {
-        Quality = quality;
+        quality = quality;
     }
 
     

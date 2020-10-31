@@ -16,10 +16,7 @@ public class Students {
     private String name;
 
     @Column
-    private String sCode;
-
-    @Column
-    private String sName;
+    private String code;
 
     @Column
     private String classroom;
@@ -51,6 +48,13 @@ public class Students {
     public void setId(int id) {
         this.id = id;
     }
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
 
     public String getName() {
         return name;
@@ -58,22 +62,6 @@ public class Students {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getsCode() {
-        return sCode;
-    }
-
-    public void setsCode(String sCode) {
-        this.sCode = sCode;
-    }
-
-    public String getsName() {
-        return sName;
-    }
-
-    public void setsName(String sName) {
-        this.sName = sName;
     }
 
     public String getClassroom() {

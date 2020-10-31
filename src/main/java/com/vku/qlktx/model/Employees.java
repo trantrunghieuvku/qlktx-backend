@@ -10,10 +10,10 @@ public class Employees {
     private int id;
 
     @Column
-    private String eName;
+    private String name;
 
     @Column
-    private String Address;
+    private String address;
 
     @Column
     private Long phone;
@@ -36,20 +36,20 @@ public class Employees {
         this.id = id;
     }
 
-    public String geteName() {
-        return eName;
+    public String getName() {
+        return name;
     }
 
-    public void seteName(String eName) {
-        this.eName = eName;
+    public void seteName(String name) {
+        this.name = name;
     }
 
     public String getAddress() {
-        return Address;
+        return address;
     }
 
     public void setAddress(String address) {
-        Address = address;
+        address = address;
     }
 
     public Long getPhone() {

@@ -19,7 +19,7 @@ public class BillDetails {
     private Long unit;
 
     @Column
-    private Date ModifiedDate;
+    private Date modifiedDate;
 
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "billDetails")
     private Bill bill;
@@ -49,10 +49,10 @@ public class BillDetails {
     }
 
     public Date getModifiedDate() {
-        return ModifiedDate;
+        return modifiedDate;
     }
 
     public void setModifiedDate(Date modifiedDate) {
-        ModifiedDate = modifiedDate;
+        modifiedDate = modifiedDate;
     }
 }

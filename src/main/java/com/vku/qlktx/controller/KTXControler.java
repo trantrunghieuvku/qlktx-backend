@@ -29,12 +29,12 @@ public class KTXControler {
     public String addRegister(@RequestBody RegisterRequest registerRequest ){
         Room    room    = ktxService.getRoomByName(registerRequest.getRoomName());
         String  name    =registerRequest.getName();
-        String  sCode   =registerRequest.getsCode();
+        String  code   =registerRequest.getCode();
         String  email   =registerRequest.getEmail();
-        Long    Identification=registerRequest.getIdentification();
+        Long    identification=registerRequest.getIdentification();
         Date    dob     =registerRequest.getDob();
         String  address =registerRequest.getAddress();
-        Register register = new Register(name, sCode, email, Identification, dob, address, room); 
+        Register register = new Register(name, code, email, identification, dob, address, room); 
         ktxService.addRegister(register);
         return "success";
     }

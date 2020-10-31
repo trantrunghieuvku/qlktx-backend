@@ -45,7 +45,7 @@ public class KTXServiceImpl implements KTXService {
 
     @Override
     public Room getRoomByName(String roomName) {
-        return roomRepository.findByrNameStartingWith(roomName);
+        return roomRepository.findByNameStartingWith(roomName);
     }
 
     @Override
