@@ -49,7 +49,7 @@ public class Employees {
     }
 
     public void setAddress(String address) {
-        address = address;
+        this.address = address;
     }
 
     public Long getPhone() {

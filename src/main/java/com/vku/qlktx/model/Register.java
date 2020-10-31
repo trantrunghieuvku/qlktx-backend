@@ -90,7 +90,7 @@ public class Register {
     }
 
     public void setIdentification(Long identification) {
-        identification = identification;
+        this.identification = identification;
     }
 
     public Date getDob() {

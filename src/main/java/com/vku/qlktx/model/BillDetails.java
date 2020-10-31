@@ -53,6 +53,6 @@ public class BillDetails {
     }
 
     public void setModifiedDate(Date modifiedDate) {
-        modifiedDate = modifiedDate;
+        this.modifiedDate = modifiedDate;
     }
 }

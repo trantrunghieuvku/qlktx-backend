@@ -59,7 +59,7 @@ public class Room {
     }
 
     public void setQuality(String quality) {
-        quality = quality;
+        this.quality = quality;
     }
 
     
