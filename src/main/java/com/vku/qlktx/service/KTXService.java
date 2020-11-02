@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import com.vku.qlktx.model.Register;
 import com.vku.qlktx.model.Room;
+import com.vku.qlktx.model.Students;
 
 public interface KTXService {
     List<Register> getAllRegister();
@@ -12,6 +13,8 @@ public interface KTXService {
     boolean addRegister(Register register);
     // List<Room> searchRoom(String rName);
     Room getRoomByName(String roomName);
+    Register getRegisterByIdentification(Long identification);
+    Students getStudentsByIdentification(Long identification);
     
 
 }

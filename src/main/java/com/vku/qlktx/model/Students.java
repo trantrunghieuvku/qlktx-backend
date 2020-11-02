@@ -27,6 +27,9 @@ public class Students {
     @Column
     private String address;
 
+    @Column
+    private Long identification;
+
     @ManyToOne(targetEntity = Room.class,cascade = CascadeType.ALL)
     @JoinColumn(name ="r_id")
     private Room roomStudents;
@@ -87,4 +90,13 @@ public class Students {
     public void setAddress(String address) {
         this.address = address;
     }
+
+    public Long getIdentification() {
+        return identification;
+    }
+
+    public void setIdentification(Long identification) {
+        this.identification = identification;
+    }
+    
 }
