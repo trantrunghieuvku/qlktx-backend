@@ -7,6 +7,7 @@ import com.vku.qlktx.model.Room;
 import com.vku.qlktx.service.Impl.KTXServiceImpl;
 import com.vku.qlktx.payload.request.RegisterRequest;
 import com.vku.qlktx.repository.RegisterRepository;
+import com.vku.qlktx.repository.StudentsRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
@@ -28,9 +29,12 @@ public class KTXControler {
     @Autowired
     private RegisterRepository registerRepository;
 
-    @PostMapping(value="/register/")
+    @Autowired
+    private StudentsRepository studentsRepository;
+
+    @PostMapping(value="/register")
     public String addRegister(@RequestBody RegisterRequest registerRequest ){
-        String s = "";
+        String s = "222";
         Room    room    = ktxService.getRoomByName(registerRequest.getRoomName());
         String  name    =registerRequest.getName();
         String  code   =registerRequest.getCode();
@@ -39,16 +43,19 @@ public class KTXControler {
         Date    dob     =registerRequest.getDob();
         String  address =registerRequest.getAddress();
         Register register = new Register(name, code, email, identification, dob, address, room); 
-        ktxService.addRegister(register);
         
         //kiểm tra sự tồn tại trong bảng  Register
-        if(ktxService.getRegisterByIdentification(identification).equals("") == false){
-            s ="Bạn đã đăng ký.";
-            
-        }
+        if(ktxService.countByIdentificationRegister(identification) == 0 && ktxService.countByIdentificationStudents(identification)==0){  
+            ktxService.addRegister(register);
+            s ="Đăng ký thành công";
+        }   
         else{
-            s = "Đăng ký thành công";
-        
+            if(ktxService.countByIdentificationRegister(identification) != 0){
+                s= "Đã đăng ký";
+            }
+            if(ktxService.countByIdentificationStudents(identification) != 0){
+                s= "Đã có phòng";
+            }
         }
         return s;
     }

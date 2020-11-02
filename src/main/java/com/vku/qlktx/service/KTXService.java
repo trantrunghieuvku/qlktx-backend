@@ -10,11 +10,12 @@ import com.vku.qlktx.model.Students;
 public interface KTXService {
     List<Register> getAllRegister();
     Optional<Register> getRegisterById(Integer id);
-    boolean addRegister(Register register);
+    void addRegister(Register register);
     // List<Room> searchRoom(String rName);
     Room getRoomByName(String roomName);
     Register getRegisterByIdentification(Long identification);
     Students getStudentsByIdentification(Long identification);
-    
+    Integer countByIdentificationStudents(Long identification);
+    Integer countByIdentificationRegister(Long identification);
 
 }
