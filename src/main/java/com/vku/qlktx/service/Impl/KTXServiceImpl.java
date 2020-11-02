@@ -55,11 +55,8 @@ public class KTXServiceImpl implements KTXService {
     }
 
     @Override
-    public boolean addRegister(Register register) {
+    public void addRegister(Register register) {
         registerRepository.save(register);
-        return true;
-        
-
     }
 
     @Override
@@ -72,6 +69,18 @@ public class KTXServiceImpl implements KTXService {
     public Students getStudentsByIdentification(Long identification) {
         // TODO Auto-generated method stub
         return studentsRepository.getStudentsByIdentification(identification);
+    }
+
+    @Override
+    public Integer countByIdentificationStudents(Long identification) {
+        // TODO Auto-generated method stub
+        return studentsRepository.countByIdentificationStudents(identification);
+    }
+
+    @Override
+    public Integer countByIdentificationRegister(Long identification) {
+        // TODO Auto-generated method stub
+        return registerRepository.countByIdentificationRegister(identification);
     }
 
     
