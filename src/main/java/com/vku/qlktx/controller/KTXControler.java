@@ -26,11 +26,6 @@ public class KTXControler {
     //thế mới để 1 service. serivce mk cũng phải khai thêm repository cũng rối
     @Autowired
     private KTXServiceImpl ktxService; 
-    @Autowired
-    private RegisterRepository registerRepository;
-
-    @Autowired
-    private StudentsRepository studentsRepository;
 
     @PostMapping(value="/register")
     public String addRegister(@RequestBody RegisterRequest registerRequest ){
@@ -44,11 +39,11 @@ public class KTXControler {
         String  address =registerRequest.getAddress();
         Register register = new Register(name, code, email, identification, dob, address, room); 
         
-        //kiểm tra sự tồn tại trong bảng  Register
+        //kiểm tra sự tồn tại trong bảng  Register và Students
         if(ktxService.countByIdentificationRegister(identification) == 0 && ktxService.countByIdentificationStudents(identification)==0){  
             ktxService.addRegister(register);
             s ="Đăng ký thành công";
-        }   
+        }
         else{
             if(ktxService.countByIdentificationRegister(identification) != 0){
                 s= "Đã đăng ký";
@@ -59,11 +54,6 @@ public class KTXControler {
         }
         return s;
     }
-
-    // @GetMapping(value="/room")
-    // public List<Room> getRoom(@RequestParam("name") String rName) {
-    //     return ktxService.searchRoom("B203");
-    // }
 
     @GetMapping("/register/") 
     public Register searchByIdentication(@RequestParam("cmnd") String cmnd){
