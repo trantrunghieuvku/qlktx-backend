@@ -5,9 +5,11 @@ import java.util.Optional;
 
 import com.vku.qlktx.model.Register;
 import com.vku.qlktx.model.Room;
+import com.vku.qlktx.model.Students;
 import com.vku.qlktx.repository.FeedbackRepository;
 import com.vku.qlktx.repository.RegisterRepository;
 import com.vku.qlktx.repository.RoomRepository;
+import com.vku.qlktx.repository.StudentsRepository;
 import com.vku.qlktx.service.KTXService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,11 +23,15 @@ public class KTXServiceImpl implements KTXService {
 
     @Autowired
     private RoomRepository roomRepository;
-    
-    //vd,ok nhớ có autowire cái nào cũng thế// hoang mang ghê, để coi hiếu code
-    //dễ hiểu mà,hơi rối ở đoạn implements,k cần interface cũng k sao nhưng mà k biêt  được có những hàm nào bên trong
+
+    @Autowired
+    private StudentsRepository studentsRepository;
+
+    // vd,ok nhớ có autowire cái nào cũng thế// hoang mang ghê, để coi hiếu code
+    // dễ hiểu mà,hơi rối ở đoạn implements,k cần interface cũng k sao nhưng mà k
+    // biêt được có những hàm nào bên trong
     // haha ok có j hỏi hiếu, tắt nha ok
-    @Autowired 
+    @Autowired
     private FeedbackRepository feedbackRepository;
 
     @Override
@@ -40,19 +46,32 @@ public class KTXServiceImpl implements KTXService {
 
     // @Override
     // public List<Room> searchRoom(String rName) {
-    //     return roomRepository.findByrNameStartingWith(rName);
+    // return roomRepository.findByrNameStartingWith(rName);
     // }
 
     @Override
     public Room getRoomByName(String roomName) {
-        return roomRepository.findByrNameStartingWith(roomName);
+        return roomRepository.findByNameStartingWith(roomName);
     }
 
     @Override
     public boolean addRegister(Register register) {
         registerRepository.save(register);
         return true;
+        
 
+    }
+
+    @Override
+    public Register getRegisterByIdentification(Long identification) {
+        // TODO Auto-generated method stub
+        return registerRepository.findByIdentification(identification);
+    }
+
+    @Override
+    public Students getStudentsByIdentification(Long identification) {
+        // TODO Auto-generated method stub
+        return studentsRepository.getStudentsByIdentification(identification);
     }
 
     

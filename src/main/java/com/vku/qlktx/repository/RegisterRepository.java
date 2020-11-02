@@ -6,5 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface RegisterRepository extends JpaRepository<Register,Integer> {
+    Register findByIdentification(Long identification);
     
 }

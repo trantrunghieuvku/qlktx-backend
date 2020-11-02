@@ -6,12 +6,12 @@ import java.util.Date;
 public class RegisterRequest {
     private String name;
 
-    private String sCode;
+    private String code;
 
     @Email
     private String email;
 
-    private Long Identification;
+    private Long identification;
 
     private Date dob;
 
@@ -27,12 +27,12 @@ public class RegisterRequest {
         this.name = name;
     }
 
-    public String getsCode() {
-        return sCode;
+    public String getCode() {
+        return code;
     }
 
-    public void setsCode(String sCode) {
-        this.sCode = sCode;
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getEmail() {
@@ -44,11 +44,11 @@ public class RegisterRequest {
     }
 
     public Long getIdentification() {
-        return Identification;
+        return identification;
     }
 
     public void setIdentification(Long identification) {
-        Identification = identification;
+        this.identification = identification;
     }
 
     public Date getDob() {

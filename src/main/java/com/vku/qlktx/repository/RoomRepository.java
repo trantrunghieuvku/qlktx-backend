@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface RoomRepository extends JpaRepository<Room,Integer> {
     
     // List<Room> findByrNameStartingWith(String rName);
-    Room findByrNameStartingWith(String roomName);
+    Room findByNameStartingWith(String roomName);
 }
