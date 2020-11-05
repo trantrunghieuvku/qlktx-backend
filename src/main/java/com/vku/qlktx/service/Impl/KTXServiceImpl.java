@@ -27,10 +27,6 @@ public class KTXServiceImpl implements KTXService {
     @Autowired
     private StudentsRepository studentsRepository;
 
-    // vd,ok nhớ có autowire cái nào cũng thế// hoang mang ghê, để coi hiếu code
-    // dễ hiểu mà,hơi rối ở đoạn implements,k cần interface cũng k sao nhưng mà k
-    // biêt được có những hàm nào bên trong
-    // haha ok có j hỏi hiếu, tắt nha ok
     @Autowired
     private FeedbackRepository feedbackRepository;
 
@@ -61,26 +57,42 @@ public class KTXServiceImpl implements KTXService {
 
     @Override
     public Register getRegisterByIdentification(Long identification) {
-        // TODO Auto-generated method stub
         return registerRepository.findByIdentification(identification);
     }
 
     @Override
     public Students getStudentsByIdentification(Long identification) {
-        // TODO Auto-generated method stub
         return studentsRepository.getStudentsByIdentification(identification);
     }
 
     @Override
     public Integer countByIdentificationStudents(Long identification) {
-        // TODO Auto-generated method stub
         return studentsRepository.countByIdentificationStudents(identification);
     }
 
     @Override
     public Integer countByIdentificationRegister(Long identification) {
-        // TODO Auto-generated method stub
         return registerRepository.countByIdentificationRegister(identification);
+    }
+
+    @Override
+    public List<Room> getAllRoom() {
+        return roomRepository.findAll();
+    }
+
+    @Override
+    public int getIdRoomByName(String roomName) {
+        return roomRepository.getIdRoomByName(roomName);
+    }
+
+    @Override
+    public List<Register> getAlRegisterByRoomId(int roomId) {
+        return registerRepository.getAllRegisterByRoomId(roomId);
+    }
+
+    @Override
+    public List<Students> getAllStudentByRoomId(int roomId) {
+        return studentsRepository.getAllStudentByRoomId(roomId);
     }
 
     
