@@ -36,8 +36,8 @@ public class KTXServiceImpl implements KTXService {
     }
 
     @Override
-    public Optional<Register> getRegisterById(Integer id) {
-        return registerRepository.findById(id);
+    public Register getRegisterById(Integer id) {
+        return registerRepository.findById(id).get();
     }
 
     // @Override

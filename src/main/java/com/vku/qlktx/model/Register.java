@@ -35,24 +35,12 @@ public class Register {
     @Column
     private String address;
 
-    @Column
+    @Column 
     private Long phone;
     
-    @ManyToOne(targetEntity = Room.class,cascade = CascadeType.ALL)
+    @ManyToOne(targetEntity = Room.class)
     @JoinColumn(name ="r_id")
     private Room roomRegisters;
-
-
-    public Register(String name, String code, String email, Long identification, Date dob, String address, Room roomRegisters) {
-        this.name = name;
-        this.code = code;
-        this.email = email;
-        this.identification = identification;
-        this.dob = dob;
-        this.address = address;
-        this.roomRegisters = roomRegisters;
-    }
-
 
     public Register() {
     }
@@ -137,6 +125,22 @@ public class Register {
     public void setPhone(Long phone) {
         this.phone = phone;
     }
+
+    public Register( @NotNull @NotBlank String name, String code, @Email @NotNull String email,
+            @NotNull Long identification, Date dob, String classroom, String address, Long phone, Room roomRegisters) {
+        this.name = name;
+        this.code = code;
+        this.email = email;
+        this.identification = identification;
+        this.dob = dob;
+        this.classroom = classroom;
+        this.address = address;
+        this.phone = phone;
+        this.roomRegisters = roomRegisters;
+    }
+
+
+    
 
     
 }

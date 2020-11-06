@@ -15,7 +15,7 @@ public class Feedback {
     @Column
     private String description;
 
-    @ManyToOne(targetEntity = Students.class,cascade = CascadeType.ALL)
+    @ManyToOne(targetEntity = Students.class)
     @JoinColumn(name ="s_id")
     private Students feedbackStudents;
 

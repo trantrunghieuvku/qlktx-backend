@@ -19,6 +19,10 @@ public class RegisterRequest {
 
     private String roomName;
 
+    private String classroom;
+    private Long phone;
+
+
     public String getName() {
         return name;
     }
@@ -73,6 +77,35 @@ public class RegisterRequest {
 
     public void setRoomName(String roomName){
         this.roomName=roomName;
+    }
+
+    public RegisterRequest(String name, String code, @Email String email, Long identification, Date dob, String address,
+            String roomName, String classroom, Long phone) {
+        this.name = name;
+        this.code = code;
+        this.email = email;
+        this.identification = identification;
+        this.dob = dob;
+        this.address = address;
+        this.roomName = roomName;
+        this.classroom = classroom;
+        this.phone = phone;
+    }
+
+    public String getClassroom() {
+        return classroom;
+    }
+
+    public void setClassroom(String classroom) {
+        this.classroom = classroom;
+    }
+
+    public Long getPhone() {
+        return phone;
+    }
+
+    public void setPhone(Long phone) {
+        this.phone = phone;
     }
 
 
