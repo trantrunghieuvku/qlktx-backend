@@ -1,5 +1,6 @@
 package com.vku.qlktx.model;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -29,6 +30,12 @@ public class Students {
 
     @Column
     private Long identification;
+
+    @Column
+    private Date dob;
+
+    @Column
+    private Long phone;
 
     @ManyToOne(targetEntity = Room.class,cascade = CascadeType.ALL)
     @JoinColumn(name ="r_id")
@@ -97,6 +104,22 @@ public class Students {
 
     public void setIdentification(Long identification) {
         this.identification = identification;
+    }
+
+    public Date getDob() {
+        return dob;
+    }
+
+    public void setDob(Date dob) {
+        this.dob = dob;
+    }
+
+    public Long getPhone() {
+        return phone;
+    }
+
+    public void setPhone(Long phone) {
+        this.phone = phone;
     }
     
 }

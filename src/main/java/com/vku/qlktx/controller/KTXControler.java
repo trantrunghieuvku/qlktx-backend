@@ -7,8 +7,6 @@ import com.vku.qlktx.model.Room;
 import com.vku.qlktx.model.Students;
 import com.vku.qlktx.service.Impl.KTXServiceImpl;
 import com.vku.qlktx.payload.request.RegisterRequest;
-import com.vku.qlktx.repository.RegisterRepository;
-import com.vku.qlktx.repository.StudentsRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
@@ -25,12 +23,13 @@ public class KTXControler {
     
     // mình có thể khai báo vô đây để gọi mà, sau này mình xử lí nhiều, 1 cái service mà đến 1000 dòng, nhìn chắc rối lắm
     //thế mới để 1 service. serivce mk cũng phải khai thêm repository cũng rối
+   
     @Autowired
     private KTXServiceImpl ktxService; 
 
     @PostMapping(value="/register")
     public String addRegister(@RequestBody RegisterRequest registerRequest ){
-        String s = "222";
+        String s = "";
         Room    room    = ktxService.getRoomByName(registerRequest.getRoomName());
         String  name    =registerRequest.getName();
         String  code   =registerRequest.getCode();
@@ -39,17 +38,20 @@ public class KTXControler {
         Date    dob     =registerRequest.getDob();
         String  address =registerRequest.getAddress();
         Register register = new Register(name, code, email, identification, dob, address, room); 
+
+        int students = ktxService.countByIdentificationStudents(identification);
+        int registers = ktxService.countByIdentificationRegister(identification);
         
         //kiểm tra sự tồn tại trong bảng  Register và Students
-        if(ktxService.countByIdentificationRegister(identification) == 0 && ktxService.countByIdentificationStudents(identification)==0){  
+        if( registers == 0 &&  students == 0){  
             ktxService.addRegister(register);
             s ="Đăng ký thành công";
         }
         else{
-            if(ktxService.countByIdentificationRegister(identification) != 0){
+            if(registers != 0){
                 s= "Đã đăng ký";
             }
-            if(ktxService.countByIdentificationStudents(identification) != 0){
+            if(students != 0){
                 s= "Đã có phòng";
             }
         }
@@ -73,6 +75,10 @@ public class KTXControler {
         return ktxService.getAlRegisterByRoomId(idRoom);
     }
 
+    @GetMapping("register/delete/")
+    public void deleteRegister(Integer id){
+
+    }
     @GetMapping("/student-get-student-by-room-name") 
     public List<Students> getStudentByRoomName(@RequestParam("name") String roomName){
         int idRoom= ktxService.getIdRoomByName(roomName);

@@ -76,6 +76,12 @@ public class KTXServiceImpl implements KTXService {
     }
 
     @Override
+    public boolean deleteRegisterById(Integer id){
+        registerRepository.deleteById(id);
+        return true;
+        
+    }
+    @Override
     public List<Room> getAllRoom() {
         return roomRepository.findAll();
     }
