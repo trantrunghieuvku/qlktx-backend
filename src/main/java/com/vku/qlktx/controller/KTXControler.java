@@ -4,6 +4,7 @@ import java.util.*;
 
 import com.vku.qlktx.model.Register;
 import com.vku.qlktx.model.Room;
+import com.vku.qlktx.model.Students;
 import com.vku.qlktx.service.Impl.KTXServiceImpl;
 import com.vku.qlktx.payload.request.RegisterRequest;
 import com.vku.qlktx.repository.RegisterRepository;
@@ -55,9 +56,28 @@ public class KTXControler {
         return s;
     }
 
-    @GetMapping("/register/") 
-    public Register searchByIdentication(@RequestParam("cmnd") String cmnd){
-        Long identification= Long.parseLong(cmnd);
-        return ktxService.getRegisterByIdentification(identification);
+    // @GetMapping("/register/") 
+    // public Register searchByIdentication(@RequestParam("cmnd") String cmnd){
+    //     Long identification= Long.parseLong(cmnd);
+    //     return ktxService.getRegisterByIdentification(identification);
+    // }
+
+    @GetMapping(value="/student-get-all-room")
+    public List<Room> getAllRoom(@RequestBody Room room) {
+        return ktxService.getAllRoom();
     }
+
+    @GetMapping("/student-get-register-by-room-name") 
+    public List<Register> getRegisterByRoomName(@RequestParam("name") String roomName){
+        int idRoom= ktxService.getIdRoomByName(roomName);
+        return ktxService.getAlRegisterByRoomId(idRoom);
+    }
+
+    @GetMapping("/student-get-student-by-room-name") 
+    public List<Students> getStudentByRoomName(@RequestParam("name") String roomName){
+        int idRoom= ktxService.getIdRoomByName(roomName);
+        return ktxService.getAllStudentByRoomId(idRoom);
+    }
+    
+    
 }
