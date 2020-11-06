@@ -17,5 +17,6 @@ public interface KTXService {
     Students getStudentsByIdentification(Long identification);
     Integer countByIdentificationStudents(Long identification);
     Integer countByIdentificationRegister(Long identification);
+    boolean deleteRegisterById(Integer id);
 
 }

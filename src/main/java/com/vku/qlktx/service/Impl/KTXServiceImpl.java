@@ -83,8 +83,10 @@ public class KTXServiceImpl implements KTXService {
         return registerRepository.countByIdentificationRegister(identification);
     }
 
-    
-
-          
+    public boolean deleteRegisterById(Integer id){
+        registerRepository.deleteById(id);
+        return true;
+        
+    }
 }
  
