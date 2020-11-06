@@ -29,9 +29,14 @@ public class Register {
 
     @Column
     private Date dob;
+    @Column
+    private String classroom;
 
     @Column
     private String address;
+
+    @Column
+    private Long phone;
     
     @ManyToOne(targetEntity = Room.class,cascade = CascadeType.ALL)
     @JoinColumn(name ="r_id")
@@ -115,6 +120,22 @@ public class Register {
 
     public void setRoomRegisters(Room roomRegisters) {
         this.roomRegisters = roomRegisters;
+    }
+
+    public String getClassroom() {
+        return classroom;
+    }
+
+    public void setClassroom(String classroom) {
+        this.classroom = classroom;
+    }
+
+    public Long getPhone() {
+        return phone;
+    }
+
+    public void setPhone(Long phone) {
+        this.phone = phone;
     }
 
     

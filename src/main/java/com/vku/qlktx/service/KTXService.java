@@ -13,6 +13,14 @@ public interface KTXService {
     void addRegister(Register register);
     // List<Room> searchRoom(String rName);
     Room getRoomByName(String roomName);
+    List<Room> getAllRoom();
+    int getIdRoomByName(String roomName);
+
+    List<Register> getAlRegisterByRoomId(int roomId);
+    List<Students> getAllStudentByRoomId(int roomId);
+
+
+
     Register getRegisterByIdentification(Long identification);
     Students getStudentsByIdentification(Long identification);
     Integer countByIdentificationStudents(Long identification);

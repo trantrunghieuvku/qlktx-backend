@@ -21,6 +21,12 @@ public class Room {
     @Column
     private String quality;
 
+    @Column
+    private int max;
+
+    @Column
+    private int current;
+
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "roomRegisters")
     private Set<Register> listRegisters = new HashSet<>();
 
@@ -60,6 +66,22 @@ public class Room {
 
     public void setQuality(String quality) {
         this.quality = quality;
+    }
+
+    public int getMax() {
+        return max;
+    }
+
+    public void setMax(int max) {
+        this.max = max;
+    }
+
+    public int getCurrent() {
+        return current;
+    }
+
+    public void setCurrent(int current) {
+        this.current = current;
     }
 
     
