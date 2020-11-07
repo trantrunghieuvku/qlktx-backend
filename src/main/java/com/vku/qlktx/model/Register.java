@@ -38,7 +38,7 @@ public class Register {
     @Column 
     private Long phone;
     
-    @ManyToOne(targetEntity = Room.class)
+    @ManyToOne(targetEntity = Room.class,cascade = CascadeType.ALL)
     @JoinColumn(name ="r_id")
     private Room roomRegisters;
 

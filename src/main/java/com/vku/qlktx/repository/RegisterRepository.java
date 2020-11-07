@@ -17,4 +17,7 @@ public interface RegisterRepository extends JpaRepository<Register,Integer> {
     
     @Query(value = "select * from Register r where r.r_id = ?1",nativeQuery = true)
     List<Register> getAllRegisterByRoomId(int roomId);
+
+    @Query(value = "select * from Register r where r.id = ?1",nativeQuery = true)
+    Register findByIdRegister(int id);
 }

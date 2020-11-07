@@ -7,6 +7,7 @@ import com.vku.qlktx.model.Room;
 import com.vku.qlktx.model.Students;
 import com.vku.qlktx.service.Impl.KTXServiceImpl;
 import com.vku.qlktx.payload.request.RegisterRequest;
+import com.vku.qlktx.repository.RoomRepository;
 import com.vku.qlktx.repository.StudentsRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,12 +28,15 @@ public class KTXControler {
    
     @Autowired
     private KTXServiceImpl ktxService;
+
+    @Autowired
+    private RoomRepository roomRepository;
     
     @Autowired
     private StudentsRepository studentsRepository;
 
     @PostMapping(value="/register")
-    public String addRegister(@RequestBody RegisterRequest registerRequest ){
+    public String addRegister(@RequestBody RegisterRequest registerRequest){
         String s = "";
         Room    room    = ktxService.getRoomByName(registerRequest.getRoomName());
         String  name    =registerRequest.getName();
@@ -81,7 +85,7 @@ public class KTXControler {
         return ktxService.getAlRegisterByRoomId(idRoom);
     }
 
-    @GetMapping("register/delete/{id}")
+    @GetMapping("register/acception/{id}")
     public void deleteRegister(@PathVariable("id")Integer id){
         Register register = ktxService.getRegisterById(id);
         Students students = new Students();
@@ -93,16 +97,17 @@ public class KTXControler {
         students.setIdentification(register.getIdentification());
         students.setEmail(register.getEmail());
         students.setPhone(register.getPhone());
-        ktxService.deleteRegisterById(id);
+        students.setRoomStudents(register.getRoomRegisters());
         studentsRepository.save(students);
-    
+        ktxService.deleteRegisterById(id);
     }
+
     @GetMapping("/room/students/") 
     public List<Students> getStudentByRoomName(@RequestParam("name") String roomName){
         int idRoom= ktxService.getIdRoomByName(roomName);
         return ktxService.getAllStudentByRoomId(idRoom);
     }
-    
+
     @GetMapping("/register/") 
     public Register searchByIdentication(@RequestParam("cmnd") String cmnd){
         Long identification= Long.parseLong(cmnd);
