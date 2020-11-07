@@ -12,4 +12,7 @@ public interface RoomRepository extends JpaRepository<Room,Integer> {
 
     @Query(value = "select r.id from Room r where r.name = ?1", nativeQuery = true)
     int getIdRoomByName(String roomName);
+
+    // @Query(value = "",nativeQuery = true)
+    // int getCountCurrentRoom(String roomName);
 }
