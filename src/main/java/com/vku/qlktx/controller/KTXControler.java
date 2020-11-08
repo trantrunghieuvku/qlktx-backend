@@ -115,10 +115,10 @@ public class KTXControler {
         roomRepository.save(room);
         
         ktxService.deleteRegisterById(id);
-        return "Thanh cong";
+        return "Thành công";
         }
         else{
-            return "ThatBai";
+            return "Thất Bại";
         }
 
     }
@@ -141,7 +141,7 @@ public class KTXControler {
     }
 
     @PutMapping("/room/edit")
-    public void editRoom(@RequestBody Room room){
+    public String editRoom(@RequestBody Room room){
         Room r = new Room();
         r.setId(room.getId());
         r.setName(room.getName());
@@ -149,5 +149,6 @@ public class KTXControler {
         r.setMax(room.getMax());
         r.setStatus(room.getStatus());
         roomRepository.save(r);
+        return "Thành công";
     }
 }
