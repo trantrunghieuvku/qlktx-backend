@@ -10,6 +10,6 @@ public interface RoomRepository extends JpaRepository<Room,Integer> {
     // List<Room> findByrNameStartingWith(String rName);
     Room findByNameStartingWith(String roomName);
 
-    @Query(value = "select r.id from Room r where r.name = ?1", nativeQuery = true)
-    int getIdRoomByName(String roomName);
+    @Query(value = "select  from Room r where r.name = ?1", nativeQuery = true)
+    Room getRoomByName(String roomName);
 }

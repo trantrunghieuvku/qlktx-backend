@@ -88,7 +88,7 @@ public class KTXServiceImpl implements KTXService {
 
     @Override
     public int getIdRoomByName(String roomName) {
-        return roomRepository.getIdRoomByName(roomName);
+        return roomRepository.getRoomByName(roomName).getId();
     }
 
     @Override
@@ -101,8 +101,11 @@ public class KTXServiceImpl implements KTXService {
         return studentsRepository.getAllStudentByRoomId(roomId);
     }
 
-    
+    @Override
+    public void deleteRoomById(Integer id) {
+        // TODO Auto-generated method stub
+        roomRepository.deleteById(id);
 
-          
+    }
 }
  
