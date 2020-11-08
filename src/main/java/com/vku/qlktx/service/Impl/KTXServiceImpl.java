@@ -102,14 +102,19 @@ public class KTXServiceImpl implements KTXService {
     }
 
     @Override
+    public void deleteRoomById(Integer id) {
+        // TODO Auto-generated method stub
+        roomRepository.deleteById(id);
+
+    }
+
+    @Override
     public Boolean checkCurrentRoom(String roomName) {
         Boolean check=true;
         if (roomRepository.getCountCurrentRoom(roomName)==0) check=false;
         return check;
     }
 
-    
-
-          
 }
+
  

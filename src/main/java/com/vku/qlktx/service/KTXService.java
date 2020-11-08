@@ -15,16 +15,18 @@ public interface KTXService {
     Room getRoomByName(String roomName);
     List<Room> getAllRoom();
     int getIdRoomByName(String roomName);
+    void deleteRoomById(Integer id);
 
     List<Register> getAlRegisterByRoomId(int roomId);
     List<Students> getAllStudentByRoomId(int roomId);
     Boolean checkCurrentRoom(String roomName);
 
-
     Register getRegisterByIdentification(Long identification);
-    Students getStudentsByIdentification(Long identification);
-    Integer countByIdentificationStudents(Long identification);
     Integer countByIdentificationRegister(Long identification);
     boolean deleteRegisterById(Integer id);
 
+    Students getStudentsByIdentification(Long identification);
+    Integer countByIdentificationStudents(Long identification);
+
+    
 }
