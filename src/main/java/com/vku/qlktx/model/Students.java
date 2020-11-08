@@ -121,5 +121,13 @@ public class Students {
     public void setPhone(Long phone) {
         this.phone = phone;
     }
+
+    public Room getRoomStudents() {
+        return roomStudents;
+    }
+
+    public void setRoomStudents(Room roomStudents) {
+        this.roomStudents = roomStudents;
+    }
     
 }

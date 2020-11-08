@@ -9,7 +9,7 @@ import com.vku.qlktx.model.Students;
 
 public interface KTXService {
     List<Register> getAllRegister();
-    Optional<Register> getRegisterById(Integer id);
+    Register getRegisterById(Integer id);
     void addRegister(Register register);
     // List<Room> searchRoom(String rName);
     Room getRoomByName(String roomName);
@@ -18,7 +18,7 @@ public interface KTXService {
 
     List<Register> getAlRegisterByRoomId(int roomId);
     List<Students> getAllStudentByRoomId(int roomId);
-
+    Boolean checkCurrentRoom(String roomName);
 
 
     Register getRegisterByIdentification(Long identification);

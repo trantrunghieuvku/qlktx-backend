@@ -36,8 +36,8 @@ public class KTXServiceImpl implements KTXService {
     }
 
     @Override
-    public Optional<Register> getRegisterById(Integer id) {
-        return registerRepository.findById(id);
+    public Register getRegisterById(Integer id) {
+        return registerRepository.findById(id).get();
     }
 
     // @Override
@@ -99,6 +99,13 @@ public class KTXServiceImpl implements KTXService {
     @Override
     public List<Students> getAllStudentByRoomId(int roomId) {
         return studentsRepository.getAllStudentByRoomId(roomId);
+    }
+
+    @Override
+    public Boolean checkCurrentRoom(String roomName) {
+        Boolean check=true;
+        if (roomRepository.getCountCurrentRoom(roomName)==0) check=false;
+        return check;
     }
 
     
