@@ -5,11 +5,13 @@ import java.util.*;
 import com.vku.qlktx.model.Register;
 import com.vku.qlktx.model.Room;
 import com.vku.qlktx.model.Students;
+import com.vku.qlktx.service.KTXService;
 import com.vku.qlktx.service.Impl.KTXServiceImpl;
 import com.vku.qlktx.payload.request.RegisterRequest;
 import com.vku.qlktx.repository.RoomRepository;
 import com.vku.qlktx.repository.StudentsRepository;
 
+import org.hibernate.annotations.Check;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,6 +36,9 @@ public class KTXControler {
     @Autowired
     private StudentsRepository studentsRepository;
 
+    @Autowired
+    private RoomRepository roomRepository;
+
     @PostMapping(value="/register")
     public String addRegister(@RequestBody RegisterRequest registerRequest){
         String s = "";
@@ -52,6 +57,7 @@ public class KTXControler {
         int registers = ktxService.countByIdentificationRegister(identification);
         
         //kiểm tra sự tồn tại trong bảng  Register và Students
+        if (ktxService.checkCurrentRoom(registerRequest.getRoomName())){
         if( registers == 0 &&  students == 0){  
             ktxService.addRegister(register);
             s ="Đăng ký thành công";
@@ -64,7 +70,9 @@ public class KTXControler {
                 s= "Đã có phòng";
             }
         }
-        return s;
+    }
+    else s="Phòng đã đủ";
+    return s;
     }
 
     // @GetMapping("/register/") 
@@ -85,8 +93,12 @@ public class KTXControler {
     }
 
     @GetMapping("register/acception/{id}")
-    public void deleteRegister(@PathVariable("id")Integer id){
+    public String  deleteRegister(@PathVariable("id")Integer id){
         Register register = ktxService.getRegisterById(id);
+        Room room =register.getRoomRegisters();
+
+        if(ktxService.checkCurrentRoom(room.getName()))
+        {
         Students students = new Students();
         students.setName(register.getName());
         students.setAddress(register.getAddress());
@@ -98,7 +110,17 @@ public class KTXControler {
         students.setPhone(register.getPhone());
         students.setRoomStudents(register.getRoomRegisters());
         studentsRepository.save(students);
+
+        room.setCurrent(room.getCurrent()+1);
+        roomRepository.save(room);
+        
         ktxService.deleteRegisterById(id);
+        return "Thanh cong";
+        }
+        else{
+            return "ThatBai";
+        }
+
     }
 
     @GetMapping("/room/students/") 
@@ -119,7 +141,13 @@ public class KTXControler {
     }
 
     @PutMapping("/room/edit")
-    public void editRoom(@PathVariable("id") Integer id){
-
+    public void editRoom(@RequestBody Room room){
+        Room r = new Room();
+        r.setId(room.getId());
+        r.setName(room.getName());
+        r.setQuality(room.getQuality());
+        r.setMax(room.getMax());
+        r.setStatus(room.getStatus());
+        roomRepository.save(r);
     }
 }

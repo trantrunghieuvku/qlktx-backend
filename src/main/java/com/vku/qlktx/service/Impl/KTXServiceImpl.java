@@ -88,7 +88,7 @@ public class KTXServiceImpl implements KTXService {
 
     @Override
     public int getIdRoomByName(String roomName) {
-        return roomRepository.getRoomByName(roomName).getId();
+        return roomRepository.getIdRoomByName(roomName);
     }
 
     @Override
@@ -107,5 +107,14 @@ public class KTXServiceImpl implements KTXService {
         roomRepository.deleteById(id);
 
     }
+
+    @Override
+    public Boolean checkCurrentRoom(String roomName) {
+        Boolean check=true;
+        if (roomRepository.getCountCurrentRoom(roomName)==0) check=false;
+        return check;
+    }
+
 }
+
  

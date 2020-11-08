@@ -19,15 +19,13 @@ public interface KTXService {
 
     List<Register> getAlRegisterByRoomId(int roomId);
     List<Students> getAllStudentByRoomId(int roomId);
+    Boolean checkCurrentRoom(String roomName);
+
+
     Register getRegisterByIdentification(Long identification);
     Integer countByIdentificationRegister(Long identification);
     boolean deleteRegisterById(Integer id);
 
     Students getStudentsByIdentification(Long identification);
     Integer countByIdentificationStudents(Long identification);
-    
-    
-
-    
-
 }
