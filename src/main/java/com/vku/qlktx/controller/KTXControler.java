@@ -10,6 +10,7 @@ import com.vku.qlktx.payload.request.RegisterRequest;
 import com.vku.qlktx.repository.RoomRepository;
 import com.vku.qlktx.repository.StudentsRepository;
 
+import org.hibernate.annotations.Check;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.RestController;
@@ -53,6 +54,7 @@ public class KTXControler {
         int registers = ktxService.countByIdentificationRegister(identification);
         
         //kiểm tra sự tồn tại trong bảng  Register và Students
+        if (ktxService.checkCurrentRoom(registerRequest.getRoomName())){
         if( registers == 0 &&  students == 0){  
             ktxService.addRegister(register);
             s ="Đăng ký thành công";
@@ -65,7 +67,9 @@ public class KTXControler {
                 s= "Đã có phòng";
             }
         }
-        return s;
+    }
+    else s="Phòng đã đủ";
+    return s;
     }
 
     // @GetMapping("/register/") 
@@ -113,5 +117,7 @@ public class KTXControler {
         Long identification= Long.parseLong(cmnd);
         return ktxService.getRegisterByIdentification(identification);
     }
+
+
 
 }

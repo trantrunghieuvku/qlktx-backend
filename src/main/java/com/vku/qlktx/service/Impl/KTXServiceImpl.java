@@ -101,6 +101,13 @@ public class KTXServiceImpl implements KTXService {
         return studentsRepository.getAllStudentByRoomId(roomId);
     }
 
+    @Override
+    public Boolean checkCurrentRoom(String roomName) {
+        Boolean check=true;
+        if (roomRepository.getCountCurrentRoom(roomName)==0) check=false;
+        return check;
+    }
+
     
 
           

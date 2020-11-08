@@ -18,7 +18,7 @@ public interface KTXService {
 
     List<Register> getAlRegisterByRoomId(int roomId);
     List<Students> getAllStudentByRoomId(int roomId);
-
+    Boolean checkCurrentRoom(String roomName);
 
 
     Register getRegisterByIdentification(Long identification);
