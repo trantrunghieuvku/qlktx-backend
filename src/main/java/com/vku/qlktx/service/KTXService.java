@@ -20,6 +20,7 @@ public interface KTXService {
     List<Register> getAlRegisterByRoomId(int roomId);
     List<Students> getAllStudentByRoomId(int roomId);
     Boolean checkCurrentRoom(String roomName);
+    void addRoom(Room room);
 
     Register getRegisterByIdentification(Long identification);
     Integer countByIdentificationRegister(Long identification);
@@ -27,6 +28,7 @@ public interface KTXService {
 
     Students getStudentsByIdentification(Long identification);
     Integer countByIdentificationStudents(Long identification);
+    void addStudents(Students students);
 
     
 }

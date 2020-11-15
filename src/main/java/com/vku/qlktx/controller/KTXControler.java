@@ -5,13 +5,11 @@ import java.util.*;
 import com.vku.qlktx.model.Register;
 import com.vku.qlktx.model.Room;
 import com.vku.qlktx.model.Students;
-import com.vku.qlktx.service.KTXService;
 import com.vku.qlktx.service.Impl.KTXServiceImpl;
 import com.vku.qlktx.payload.request.RegisterRequest;
 import com.vku.qlktx.repository.RoomRepository;
 import com.vku.qlktx.repository.StudentsRepository;
 
-import org.hibernate.annotations.Check;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.RestController;
@@ -109,10 +107,10 @@ public class KTXControler {
         students.setEmail(register.getEmail());
         students.setPhone(register.getPhone());
         students.setRoomStudents(register.getRoomRegisters());
-        studentsRepository.save(students);
+        ktxService.addStudents(students);
 
         room.setCurrent(room.getCurrent()+1);
-        roomRepository.save(room);
+        ktxService.addRoom(room);
         
         ktxService.deleteRegisterById(id);
         return "Thành công";
@@ -148,7 +146,12 @@ public class KTXControler {
         r.setQuality(room.getQuality());
         r.setMax(room.getMax());
         r.setStatus(room.getStatus());
-        roomRepository.save(r);
+        ktxService.addRoom(r);
         return "Thành công";
+    }
+
+    @PostMapping("/room/add")
+    public void addRoom(@RequestBody Room room){
+        ktxService.addRoom(room);
     }
 }

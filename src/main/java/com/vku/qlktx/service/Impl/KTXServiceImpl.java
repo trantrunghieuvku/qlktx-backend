@@ -115,6 +115,19 @@ public class KTXServiceImpl implements KTXService {
         return check;
     }
 
+    @Override
+    public void addRoom(Room room) {
+        // TODO Auto-generated method stub
+        roomRepository.save(room);
+    }
+
+	@Override
+	public void addStudents(Students students) {
+        // TODO Auto-generated method stub
+        studentsRepository.save(students);
+		
+	}
+
 }
 
  
